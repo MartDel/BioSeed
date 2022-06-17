@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "description": "The BioSeed main server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MartDel/BioSeed.git"
+  },
+  "author": "MartDel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MartDel/BioSeed/issues"
+  },
+  "homepage": "https://github.com/MartDel/BioSeed#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1"
+  }
+}

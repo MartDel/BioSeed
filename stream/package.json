@@ -1,7 +1,7 @@
 {
     "name": "bioseed-stream",
     "version": "0.1.0",
-    "description": "",
+    "description": "A RTMP stream server",
     "main": "index.js",
     "scripts": {
         "start": "node .",
