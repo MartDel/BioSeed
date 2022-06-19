@@ -1,26 +1,84 @@
-/* -------------------------------------------------------------------------- */
-/*                                   Events                                   */
-/* -------------------------------------------------------------------------- */
+/* ------------------------------- Useful data ------------------------------ */
 
+const imgPath = "img/";
+
+/* ------------------------------ HTML Elements ----------------------------- */
+
+const htmlAnim = {
+    container: document.querySelector('.anim'),
+    drip: document.querySelector('.drip'),
+    logo: document.querySelector('.logo')
+};
+
+const htmlMain = {
+    container: document.querySelector('main'),
+    prevBtn: document.querySelector('#prev_btn'),
+    nextBtn: document.querySelector('#next_btn'),
+    mainBtn: document.querySelector('.main-btn'),
+    btnBorder: document.querySelector('#btn_border')
+}
+
+/* --------------------------------- Events --------------------------------- */
+
+// Start the animation when the page is loaded
 window.addEventListener("load", () => {
     setTimeout(() => {
+        // Check if the user already played the animation today
         const playAnim = getCookie("playAnim");
         if (playAnim === "") {
             setCookie("playAnim", "ok", 1);
-            document.querySelector('.drip').classList.add('falling');
+            htmlAnim.drip.classList.add('falling');
             setTimeout(() => {
-                document.querySelector('.drip').classList.remove('falling');
-                document.querySelector('.logo').classList.add('show');
+                htmlAnim.drip.classList.remove('falling');
+                htmlAnim.logo.classList.add('show');
+                htmlAnim.container.addEventListener("click", mainBtnClick);
             }, 2000);
         } else {
-            document.querySelector('.logo').classList.add('show');
+            htmlAnim.logo.classList.add('show');
+            htmlAnim.container.addEventListener("click", mainBtnClick);
         }
     }, 500);
 });
 
-/* -------------------------------------------------------------------------- */
-/*                                  Functions                                 */
-/* -------------------------------------------------------------------------- */
+// Show the main content after clicking the animation button
+function mainBtnClick() {
+    htmlAnim.container.style.display = "none";
+    htmlMain.container.classList.add("show-main");
+}
+
+// The previous button listener
+htmlMain.prevBtn.addEventListener('click', () => {
+    if (htmlMain.prevBtn.classList.contains("disabled")) return;
+    
+    // Update the main button
+    htmlMain.btnBorder.src = `${imgPath}bs_shape_border_green.png`;
+    htmlMain.mainBtn.src = `${imgPath}add_btn.png`;
+
+    // Update nav buttons
+    htmlMain.nextBtn.classList.remove("disabled")
+    htmlMain.prevBtn.classList.add("disabled")
+});
+
+// The next button listener
+htmlMain.nextBtn.addEventListener('click', () => {
+    if (htmlMain.nextBtn.classList.contains("disabled")) return;
+
+    // Update the main button
+    htmlMain.btnBorder.src = `${imgPath}bs_shape_border_blue.png`;
+    htmlMain.mainBtn.src = `${imgPath}watch_btn.png`;
+    
+    // Update nav buttons
+    htmlMain.prevBtn.classList.remove("disabled")
+    htmlMain.nextBtn.classList.add("disabled")
+});
+
+// The main button listener
+htmlMain.mainBtn.addEventListener('click', () => {
+    const action = htmlMain.btnBorder.src.includes('green') ? 'add' : 'watch';
+    console.log(action);
+});
+
+/* -------------------------------- Functions ------------------------------- */
 
 /**
  * Set a cookie
