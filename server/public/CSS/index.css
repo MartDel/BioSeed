@@ -12,35 +12,72 @@ body {
 .anim {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .anim .drip {
-  position: fixed;
-  left: 50%;
+  position: absolute;
+  left: 49%;
   width: 20px;
   height: 20px;
   background-color: #0C7489;
   border-radius: 0 0 20px 20px;
-  opacity: 1;
+  opacity: 0;
 }
 .anim .falling {
   animation-name: building-logo;
   animation-duration: 2s;
   animation-timing-function: cubic-bezier(0.51, -0.13, 0.91, 1.08);
 }
+.anim .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.anim .logo .bs-shape {
+  display: block;
+  width: auto;
+  height: 80px;
+  margin: 0;
+  z-index: 1;
+}
+.anim .logo .bs-shape-border {
+  display: block;
+  width: auto;
+  height: 120px;
+  margin-top: -100px;
+  z-index: 2;
+  opacity: 0;
+}
+.anim .show {
+  cursor: pointer;
+}
+.anim .show .bs-shape-border {
+  opacity: 1;
+  transition: opacity 1s;
+}
+.anim .show:hover .bs-shape-border {
+  height: 124px;
+  margin-top: -102px;
+}
 /* -------------------------------- Keyframes ------------------------------- */
 @keyframes building-logo {
   0% {
     top: 0;
     border-radius: 0 0 20px 20px;
+    opacity: 1;
   }
   10% {
     border-radius: 20px;
   }
   100% {
-    top: 40%;
+    top: 45%;
     border-radius: 20px;
+    opacity: 1;
   }
 }
