@@ -1,5 +1,13 @@
 {
     "http": {
-        "port": 8080
+        "port": 8080,
+        "favicons": [
+            "/favicon.ico",
+            "/apple-touch-icon.png",
+            "/favicon-32x32.png",
+            "/favicon-16x16.png",
+            "/site.webmanifest",
+            "/safari-pinned-tab.svg"
+        ]
     }
 }

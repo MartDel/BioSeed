@@ -1,6 +1,14 @@
 /* -------------------------------------------------------------------------- */
 /*                           The main page LESS file                          */
 /* -------------------------------------------------------------------------- */
+/* --------------------------------- Imports -------------------------------- */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Me5Q.ttf) format('truetype');
+}
 /* -------------------------------- Variables ------------------------------- */
 /* ---------------------------------- Main ---------------------------------- */
 body {
@@ -8,7 +16,7 @@ body {
   padding: 0;
   margin: 0;
   color: white;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 main {
   opacity: 0;
@@ -60,6 +68,35 @@ main nav .bs-main-shape .bs-shape-border {
   width: auto;
   height: 120px;
   margin-top: -100px;
+}
+main aside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+}
+main aside .circles {
+  display: flex;
+  justify-content: space-between;
+  width: 40px;
+}
+main aside .circles .nav-circle {
+  opacity: 0.8;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  border: 2px solid white;
+  cursor: pointer;
+}
+main aside .circles .active {
+  background-color: white;
+  cursor: default;
+}
+main aside .action-info {
+  text-align: center;
+  color: white;
+  font-weight: bold;
 }
 .show-main {
   opacity: 1;

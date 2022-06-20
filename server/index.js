@@ -13,4 +13,9 @@ app.get('/', (_req, res) => {
     res.render('index');
 });
 
+app.get(config.http.favicons, (req, res) => {
+    const file = req.path.substring(1); 
+    res.sendFile(path.join(__dirname, 'public', 'favicons', file));
+});
+
 app.listen(config.http.port, () => console.log("BioSeed server is listening on port", config.http.port));

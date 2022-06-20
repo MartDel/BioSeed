@@ -2,6 +2,10 @@
 /*                           The main page LESS file                          */
 /* -------------------------------------------------------------------------- */
 
+/* --------------------------------- Imports -------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 /* -------------------------------- Variables ------------------------------- */
 
 // Colors
@@ -16,6 +20,9 @@
 // Opacities
 @white-opacity: 0.8;
 
+// Fonts
+@text-font: 'Roboto', sans-serif;
+
 /* ---------------------------------- Main ---------------------------------- */
 
 body {
@@ -23,7 +30,7 @@ body {
     padding: 0;
     margin: 0;
     color: @text-color;
-    font-family: sans-serif;
+    font-family: @text-font;
 }
 
 main {
@@ -81,6 +88,40 @@ main {
                 height: 120px;
                 margin-top: -100px;
             }
+        }
+    }
+
+    aside {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 30px;
+
+        .circles {
+            display: flex;
+            justify-content: space-between;
+            width: 40px;
+
+            .nav-circle {
+                opacity: @white-opacity;
+                width: 10px;
+                height: 10px;
+                border-radius: 10px;
+                border: 2px solid @text-color;
+                cursor: pointer;
+            }
+
+            .active {
+                background-color: @text-color;
+                cursor: default;
+            }
+        }
+
+        .action-info {
+            text-align: center;
+            color: @text-color;
+            font-weight: bold;
         }
     }
 }

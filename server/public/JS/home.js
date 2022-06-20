@@ -11,11 +11,17 @@ const htmlAnim = {
 };
 
 const htmlMain = {
+    // Nav
     container: document.querySelector('main'),
     prevBtn: document.querySelector('#prev_btn'),
     nextBtn: document.querySelector('#next_btn'),
     mainBtn: document.querySelector('.main-btn'),
-    btnBorder: document.querySelector('#btn_border')
+    btnBorder: document.querySelector('#btn_border'),
+
+    // Aside
+    firstCircle: document.getElementsByClassName("nav-circle")[0],
+    secondCircle: document.getElementsByClassName("nav-circle")[1],
+    infoText: document.getElementById("info")
 }
 
 /* --------------------------------- Events --------------------------------- */
@@ -47,35 +53,50 @@ function mainBtnClick() {
 }
 
 // The previous button listener
-htmlMain.prevBtn.addEventListener('click', () => {
+function previous() {
     if (htmlMain.prevBtn.classList.contains("disabled")) return;
-    
+
     // Update the main button
     htmlMain.btnBorder.src = `${imgPath}bs_shape_border_green.png`;
     htmlMain.mainBtn.src = `${imgPath}add_btn.png`;
 
     // Update nav buttons
-    htmlMain.nextBtn.classList.remove("disabled")
-    htmlMain.prevBtn.classList.add("disabled")
-});
+    htmlMain.nextBtn.classList.remove("disabled");
+    htmlMain.prevBtn.classList.add("disabled");
+
+    // Update aside
+    htmlMain.firstCircle.classList.add("active");
+    htmlMain.secondCircle.classList.remove("active");
+    htmlMain.infoText.innerText = "Je veux créer !";
+}
+htmlMain.prevBtn.addEventListener('click', previous);
+htmlMain.firstCircle.addEventListener('click', previous);
 
 // The next button listener
-htmlMain.nextBtn.addEventListener('click', () => {
+function next() {
     if (htmlMain.nextBtn.classList.contains("disabled")) return;
 
     // Update the main button
     htmlMain.btnBorder.src = `${imgPath}bs_shape_border_blue.png`;
     htmlMain.mainBtn.src = `${imgPath}watch_btn.png`;
-    
+
     // Update nav buttons
     htmlMain.prevBtn.classList.remove("disabled")
     htmlMain.nextBtn.classList.add("disabled")
-});
+
+    // Update aside
+    htmlMain.secondCircle.classList.add("active");
+    htmlMain.firstCircle.classList.remove("active");
+    htmlMain.infoText.innerText = "Je veux profiter !";
+}
+htmlMain.nextBtn.addEventListener('click', next);
+htmlMain.secondCircle.addEventListener('click', next);
 
 // The main button listener
 htmlMain.mainBtn.addEventListener('click', () => {
     const action = htmlMain.btnBorder.src.includes('green') ? 'add' : 'watch';
-    console.log(action);
+    const path = action === 'add' ? 'create' : 'explore';
+    window.location.href = `/${path}`;
 });
 
 /* -------------------------------- Functions ------------------------------- */
